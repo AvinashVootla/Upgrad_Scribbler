@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+   <link href="https://fonts.googleapis.com/css?family=Montez&display=swap" rel="stylesheet">
+   <link href='..\css\common.css' rel='stylesheet' type='text/css'>
+   <link rel="stylesheet" href="..\font-awesome-4.7.0/css/font-awesome.min.css">
+   <link href='..\css\font.css' rel='stylesheet' type='text/css'>
+   <link href='..\css\post.css' rel='stylesheet' type='text/css'>
+   <style>
+   </style>
+</head>
+<body>
+   <div id="main-container-div">
+      <!-- Insert code for Sign Up, Sign In button here. Add code for "ScriBBler" heading and the sub-heading -->
+      <div class="header">
+         <div class="title-container">
+            <p class="title">ScriBBler</p>
+            <p class="sub-title">Explore, Imagine, Create</p>
+         </div>
+         <div class="login-buttons-container">
+            <button onclick="showSignInModal()" class="blue-button" type="button">Sign In</button>
+            <button onclick="showSignUpModal()" class="blue-button" type="button">Sign Up</button>
+         </div>
+      </div>
+   </div>
+   <div>
+      <!-- Insert code for Sign In modal here -->
+      <div class="modal" id="signin-modal">
+         <div class="modal-content">
+            <div class="modal-head">
+               <span onclick="hideSignInModal()" id="close" class="close">&times;</span>
+               <h2 class="modal-title">Welcome Back!</h2>
+            </div>
+            <hr>
+            <form>
+               <label for="username" class="label-text">Username</label>
+               <input type="text" id="username" placeholder="Enter Username" required/>
+               <label for="password" class="label-text">Password</label>
+               <input type="password" id="password" placeholder="Enter Password" required/>
+               <button type="submit" onclick="signin(username, password)" class="signin-btn">Sign In</button>
+            </form>
+            <p class='bottom-banner'>Not a member?<span onclick="hideSignInModal();showSignUpModal()" class='signup'>Sign Up</span></p>
+         </div>
+      </div>
+   </div>
+   <!-- Insert code for Sign Up modal here -->
+   <div>
+      <div class="modal" id="signup-modal">
+         <div class="modal-content">
+            <div class="modal-head">
+               <span onclick="hideSignUpModal()" id="close" class="close">&times;</span>
+               <h2 class="modal-title">Get Started</h2>
+            </div>
+            <hr>
+            <form>
+               <label for="fullname" class="label-text">Name</label>
+               <input type="text" id="fullname" placeholder="Enter your name" required />
+               <label for="username" class="label-text">Username</label>
+               <input type="text" id="username" placeholder="Enter your username" required />
+               <label for="password" class="label-text">Password</label>
+               <input type="password" id="password" placeholder="Enter your password" required />
+               <label for="confirmpassword" class="label-text">Confirm Password</label>
+               <input type="password" id="confirm_password" placeholder="Re-enter your password" required />
+               <button type="submit" onclick="signup(firstName,lastName, email, password, mobile)" class="signin-btn">Sign up</button>
+            </form>
+         </div>
+      </div>
+   </div>
+   <div class="postContent">
+   <div id="postTitle" class="postTitle">
+      <h id="postTitleNew">Everything you should know about ‘module’ & ‘require’ in Node.js</h>
+      <center><textarea id="titleArea" style="display: none; width: 447px;font-size: 16.5px"></textarea></center>
+   </div>
+   <div class="postAuthor">
+      <!-- Insert code for Edit/Save button and  -->
+      <p>Srishti Gupta</p>
+      <a id="edit" onclick="changeText()">
+         <div id="text"> Edit</div>
+         <div id="text2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+      </a>
+   </div>
+   <div class="postText">
+      <p id="postBody">
+         Node.js treats each JavaScript file as a separate module.For instance, if you have a file containing some code and this file is named xyz.js, then this file is treated as a module in Node, and you can say that you’ve created a module named xyz.Let’s take an example to understand this better. You have a file named circle.js which consists of the logic for calculating the area & the circumference of a circle of a given radius, as given below: circle.js. You can call circle.js file a module named circle.You might be wondering why is there a need to have multiple modules? You could have just written all the code in a single module. Well, it is very important to write modular code. By modular, I mean to say that your code should be independent and should be loosely coupled. Imagine that there’s a large application and you have all your code written in just one place, just one file. Too messy, right? How does the code written inside a module run? Before executing the code written inside a module, Node takes the entire code and encloses it within a function wrapper. You can see that there is a function wrapper at the root level encompassing all the code written inside the circle module. The entire code written inside a module is private to the module, unless explicitly stated (exported) otherwise. This is the most significant advantage of having modules in Node.js. Even if you define a global variable in a module using var, let or const keywords, the variables are scoped locally to the module rather than being scoped globally. This happens because each module has a function wrapper of its own and the code written inside one function is local to that function and cannot be accessed outside this function.Imagine that there are two modules — A and B. The code written inside the module A is enclosed within the function wrapper corresponding to the module A. Similar thing happens with the code written inside the module B. Because the code pertaining to both the modules is enclosed within different functions, these functions will not be able to access the code of each other. (Remember each function in JavaScript has its own local scope?) This is the reason why module A cannot access the code written inside module B and vice-versa.The five parameters — exports, require, module, __filename, __dirname are available inside each module in Node. Though these parameters are global to the code within a module yet they are local to the module (because of the function wrapper as explained above). These parameters provide valuable information related to a module.
+      </p>
+      <textarea id="textarea" style="display: none"></textarea>
+   </div>
+   <br/>
+   <!-- Insert code for Like button, Comment button, Comment box here-->
+   <a onclick="liker()" id="edit" style="width: 90px">
+      <div id="text"><i class="fa fa-thumbs-up" aria-hidden="true"></i></div>
+      <div id="text2" class="likeText">Like</div>
+   </a>
+   <p id="like">Be the first one to like this!</p>
+   <div id="commentBox" style="display: none">
+      <textarea id="cmntText" placeholder="Leave a comment..." style="height: 85px; width: 40%"></textarea>
+      <br>
+      <button onclick="cmnt()">Comment</button>
+      <B>
+         <p>All Comments</p>
+      </B>
+      <div id="commentArea" style="width: 45%; background-color: darkgray; height: auto; padding: 10px ;display: none">
+      </div>
+   </div>
+   <p id="temp" style="display: none;"><i class="fa fa-save"></i></p>
+   <p id="temp2" style="display: none;"><i class="fa fa-edit"></i></p>
+   <script src="..\js\post.js" defer></script>
+   <script src="..\js\common.js"></script>
+</body>
